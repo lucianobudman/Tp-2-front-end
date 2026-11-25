@@ -346,6 +346,10 @@ document.addEventListener("DOMContentLoaded", () => {
         wrapper.className = "nav-link-wrap";
         link.replaceWith(wrapper);
         wrapper.appendChild(link);
+        if (["Mac", "Watch", "Vision", "AirPods", "Home", "Entertainment", "Accessories"].includes(menuName)) {
+            const category = menuName === "Accessories" ? "Accesorios" : menuName;
+            link.href = `catalogo.html?category=${encodeURIComponent(category)}`;
+        }
 
         const panel = document.createElement("div");
         panel.className = "nav-mega-menu";
@@ -355,7 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="mega-column">
                         ${column.map((text, index) => index === 0
                             ? `<p class="mega-heading">${text}</p>`
-                            : `<a href="${menuName === "Soporte" ? "soporte.html" : "catalogo.html"}">${text}</a>`).join("")}
+                            : `<a href="${menuName === "Soporte" ? "soporte.html" : `catalogo.html?category=${encodeURIComponent(["Mac", "iPad", "iPhone", "Watch", "Vision", "AirPods", "Home", "Entertainment", "Accessories"].includes(menuName) ? (menuName === "Accessories" ? "Accesorios" : menuName) : "Todos")}`}">${text}</a>`).join("")}
                     </div>
                 `).join("")}
             </div>
@@ -389,6 +393,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (productGrid) {
         let activeCategory = "Todos";
         let apiProducts = [];
+        const requestedCategory = new URLSearchParams(window.location.search).get("category");
+        const validCategories = ["Todos", "iPhone", "iPad", "Mac", "Watch", "Vision", "AirPods", "Home", "Entertainment", "Accesorios"];
+        if (requestedCategory && validCategories.includes(requestedCategory)) {
+            activeCategory = requestedCategory;
+        }
 
         const inferCategory = product => {
             const text = `${product.title} ${product.category} ${product.description} ${product.tags?.join(" ") || ""}`.toLowerCase();
@@ -426,6 +435,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 ? combinedProducts
                 : combinedProducts.filter(product => product.category === category);
 
+            document.querySelectorAll(".catalog-filter").forEach(button => {
+                const isActive = button.dataset.category === category;
+                button.classList.toggle("is-active", isActive);
+                button.setAttribute("aria-pressed", String(isActive));
+            });
+
+            const catalogHeading = document.querySelector(".shop-page .section-header h2");
+            if (catalogHeading) {
+                catalogHeading.textContent = category === "Todos" ? "Catálogo general" : `${category} disponibles`;
+            }
+
             productGrid.innerHTML = "";
             products.forEach(product => {
                 const card = document.createElement("article");
@@ -453,7 +473,15 @@ document.addEventListener("DOMContentLoaded", () => {
             button.addEventListener("click", () => {
                 document.querySelectorAll(".catalog-filter").forEach(item => item.classList.remove("is-active"));
                 button.classList.add("is-active");
-                renderCatalog(button.dataset.category);
+                const category = button.dataset.category;
+                const url = new URL(window.location.href);
+                if (category === "Todos") {
+                    url.searchParams.delete("category");
+                } else {
+                    url.searchParams.set("category", category);
+                }
+                window.history.replaceState({}, "", url);
+                renderCatalog(category);
             });
         });
 
