@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple (América Latina) - Catálogo Dinámico</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Navegación estilo Apple -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <svg height="18" viewBox="0 0 17 18" width="17" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m15.575 12.315c-.279.578-.602 1.13-.969 1.654-.51 0.728-1.042 1.455-1.85 1.47-0.808.015-1.068-.48-1.993-.48s-1.215.465-1.993.48c-.808.015-1.37-.713-1.88-1.44-1.042-1.485-1.838-4.2-0.765-6.045.533-.915 1.485-1.485 2.52-1.5 0.825-.015 1.545.555 2.055.555s1.38-.69 2.37-.585c.413.015 1.575.165 2.325 1.245-.06.045-1.38.795-1.365 2.385.015 1.905 1.665 2.535 1.68 2.55-.015.045-.255.885-.84 1.71zm-2.73-10.425c.435-.525.735-1.245.645-1.965-.63.03-1.41.42-1.86.945-.405.465-.765 1.215-.66 1.92.705.06 1.44-.375 1.875-.9Z" fill="currentColor"/>
+                </svg>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="nav-toggle-icon" aria-hidden="true"></span>
+                <span class="sr-only">Abrir menú</span>
+            </button>
+            <nav class="nav-menu" id="primary-navigation" aria-label="Navegación principal">
+                <div class="nav-item-store">
+                    <button class="store-menu-trigger" type="button" aria-expanded="false" aria-controls="store-mega-menu">Store</button>
+                    <div class="store-mega-menu" id="store-mega-menu" aria-label="Menú Store">
+                        <div class="store-mega-inner">
+                            <div class="mega-column mega-shop">
+                                <p class="mega-heading">Shop</p>
+                                <a href="catalogo.html">Shop Gifts</a>
+                                <a href="catalogo.html">Mac</a>
+                                <a href="ipad.html">iPad</a>
+                                <a href="iphone.html">iPhone</a>
+                                <a href="catalogo.html">Apple Watch</a>
+                                <a href="catalogo.html">Apple Vision Pro</a>
+                                <a href="catalogo.html">AirPods</a>
+                                <a href="catalogo.html">Home</a>
+                                <a href="catalogo.html">Accessories</a>
+                            </div>
+                            <div class="mega-column">
+                                <p class="mega-heading">Quick Links</p>
+                                <a href="catalogo.html">Apple Store Black Friday Event</a>
+                                <a href="catalogo.html">Find a Store</a>
+                                <a href="catalogo.html">Order Status</a>
+                                <a href="catalogo.html">Apple Upgrade</a>
+                                <a href="catalogo.html">Apple Trade In</a>
+                                <a href="catalogo.html">Financing</a>
+                                <a href="soporte.html">Personal Setup</a>
+                            </div>
+                            <div class="mega-column">
+                                <p class="mega-heading">Shop Special Stores</p>
+                                <a href="catalogo.html">Certified Refurbished</a>
+                                <a href="catalogo.html">Education</a>
+                                <a href="catalogo.html">Business</a>
+                                <a href="catalogo.html">Veterans and Military</a>
+                                <a href="catalogo.html">Government</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="catalogo.html">Mac</a>
+                <a href="ipad.html">iPad</a>
+                <a href="iphone.html">iPhone</a>
+                <a href="catalogo.html">Watch</a>
+                <a href="catalogo.html">Vision</a>
+                <a href="catalogo.html">AirPods</a>
+                <a href="catalogo.html">Home</a>
+                <a href="#api-section">Entertainment</a>
+                <a href="catalogo.html">Accessories</a>
+                <a href="soporte.html">Soporte</a>
+            </nav>
+            <button class="cart-button" type="button" aria-label="Abrir carrito">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                    <path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L20.5 7H6.1M9.5 20a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm8 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span id="cart-count" class="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="home-ribbon">
+        <span>Este año, descubre regalos increíbles para todas las personas de tu lista.</span>
+        <a href="catalogo.html">Comprar regalos</a>
+    </div>
+
+    <main class="apple-home">
+        <section id="hero" class="homepage-hero iphone-hero">
+            <div class="homepage-copy">
+                <h1>iPhone</h1>
+                <p>Conoce la familia iPhone más potente.</p>
+                <div class="homepage-actions">
+                    <a href="iphone.html" class="apple-button apple-button-blue">Más información</a>
+                    <a href="catalogo.html" class="apple-button apple-button-outline">Comprar iPhone</a>
+                </div>
+            </div>
+            <div class="iphone-family" aria-label="Familia iPhone">
+                <img class="iphone-family-back" src="img/products/124.webp" alt="iPhone azul">
+                <img class="iphone-family-front" src="img/products/123.webp" alt="iPhone 18 Pro">
+            </div>
+        </section>
+
+        <section class="homepage-hero ipad-family-hero">
+            <div class="homepage-copy">
+                <p class="hero-kicker">Nuevo</p>
+                <h2>iPad Air</h2>
+                <p>Ligero. Versátil. Extraordinario.</p>
+                <div class="homepage-actions">
+                    <a href="ipad.html" class="apple-button apple-button-blue">Más información</a>
+                    <a href="detalle.html?id=121&title=iPad%20Air&price=599&image=img/products/121.webp" class="apple-button apple-button-outline">Comprar</a>
+                </div>
+            </div>
+            <img class="wide-ipad-image" src="img/products/121.webp" alt="iPad Air">
+        </section>
+
+        <section class="homepage-hero watch-hero">
+            <div class="homepage-copy">
+                <h2>Accesorios</h2>
+                <p>Luz, soporte y conectividad para tus dispositivos.</p>
+                <div class="homepage-actions">
+                    <a href="#api-section" class="apple-button apple-button-light">Más información</a>
+                    <a href="catalogo.html" class="apple-button apple-button-dark-outline">Comprar</a>
+                </div>
+            </div>
+            <img class="watch-image" src="img/products/110.webp" alt="Aro de luz con trípode">
+        </section>
+
+        <section class="homepage-promo-grid" aria-label="Promociones">
+            <article class="promo-card promo-gifts">
+                <div class="promo-copy">
+                    <p class="promo-kicker">Temporada de regalos</p>
+                    <h2>Ideas que hacen felices.</h2>
+                    <p>Encuentra el regalo perfecto para todos.</p>
+                    <a href="catalogo.html" class="apple-button apple-button-blue">Comprar regalos</a>
+                </div>
+            </article>
+
+            <article class="promo-card promo-ipad">
+                <div class="promo-copy">
+                    <h2>iPad</h2>
+                    <p>Ahora con más potencia y creatividad.</p>
+                    <div class="homepage-actions">
+                        <a href="ipad.html" class="apple-button apple-button-blue">Más información</a>
+                        <a href="detalle.html?id=121&title=iPad&price=349&image=img/products/121.webp" class="apple-button apple-button-outline">Comprar</a>
+                    </div>
+                </div>
+                <img src="img/products/121.webp" alt="iPad">
+            </article>
+
+            <article class="promo-card promo-iphone promo-dark">
+                <div class="promo-copy">
+                    <p class="promo-kicker">iPhone 18 Pro</p>
+                    <h2>Titanio. Potencia. Pro.</h2>
+                    <div class="homepage-actions">
+                        <a href="iphone.html" class="apple-button apple-button-light">Más información</a>
+                        <a href="detalle.html?id=122&title=iPhone%2018%20Pro&price=999&image=img/products/122.webp" class="apple-button apple-button-dark-outline">Comprar</a>
+                    </div>
+                </div>
+                <img src="img/products/122.webp" alt="iPhone 18 Pro">
+            </article>
+
+            <article class="promo-card promo-trade">
+                <div class="promo-copy">
+                    <h2>Cambia tu equipo.</h2>
+                    <p>Recibe crédito por tu dispositivo actual.</p>
+                    <a href="catalogo.html" class="apple-button apple-button-blue">Ver opciones</a>
+                </div>
+                <div class="trade-products">
+                    <img src="img/products/124.webp" alt="iPhone negro">
+                    <img src="img/products/123.webp" alt="iPhone azul">
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- Sección de Productos Consumidos desde la API REST -->
+    <section id="api-section" class="products-container">
+        <div class="section-header">
+            <h2>Explorá el catálogo general</h2>
+            <p>Datos sincronizados en tiempo real mediante API REST pública[cite: 1].</p>
+        </div>
+
+        <div id="product-grid" class="product-grid">
+            <!-- Las tarjetas se cargarán dinámicamente desde js/scripts.js -->
+            <p class="loading-text">Cargando catálogo...</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="soporte">
+        <div class="footer-content">
+            <p>Copyright © 2026 Apple Inc. Todos los derechos reservados. | Trabajo Práctico Grupal[cite: 1]</p>
+        </div>
+    </footer>
+
+    <div id="cart-overlay" class="cart-overlay" aria-hidden="true">
+        <aside class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+            <div class="cart-header">
+                <h2 id="cart-title">Tu bolsa</h2>
+                <button id="cart-close" class="cart-close" type="button" aria-label="Cerrar carrito">&times;</button>
+            </div>
+            <div id="cart-items" class="cart-items"></div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total</span>
+                    <strong id="cart-total">$0 USD</strong>
+                </div>
+                <button id="checkout-button" class="checkout-button" type="button">Finalizar compra</button>
+                <p class="cart-disclaimer">Compra de demostración. No se realizará ningún cobro.</p>
+            </div>
+        </aside>
+    </div>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
