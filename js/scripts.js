@@ -337,6 +337,43 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+    const getMegaMenuUrl = (menuName, itemName) => {
+        if (menuName === "Soporte") return "soporte.html";
+
+        let category = menuName === "Accessories" ? "Accesorios" : menuName;
+        const lowerItem = itemName.toLowerCase();
+
+        if (lowerItem.includes("mac accessories") || lowerItem.includes("iphone accessories") ||
+            lowerItem.includes("ipad accessories") || lowerItem.includes("watch accessories") ||
+            lowerItem.includes("airpods accessories") || lowerItem.includes("home accessories") ||
+            lowerItem.includes("accessories")) category = "Accesorios";
+        else if (lowerItem.includes("iphone")) category = "iPhone";
+        else if (lowerItem.includes("ipad")) category = "iPad";
+        else if (lowerItem.includes("mac")) category = "Mac";
+        else if (lowerItem.includes("watch")) category = "Watch";
+        else if (lowerItem.includes("vision")) category = "Vision";
+        else if (lowerItem.includes("airpods")) category = "AirPods";
+        else if (lowerItem.includes("homepod") || lowerItem.includes("home")) category = "Home";
+        else if (lowerItem.includes("apple tv") || lowerItem.includes("entertainment")) category = "Entertainment";
+        else if (lowerItem.includes("accessories") || lowerItem.includes("accesorios")) category = "Accesorios";
+
+        const url = new URL("catalogo.html", window.location.href);
+        url.searchParams.set("category", category);
+
+        const modelNames = [
+            "MacBook Neo", "MacBook Air", "MacBook Pro", "iMac", "Mac mini", "Mac Studio",
+            "iPad Pro", "iPad Air", "iPad mini",
+            "iPhone 18 Pro", "iPhone 18", "iPhone Air", "iPhone Duo",
+            "Apple Watch Series 12", "Apple Watch Ultra 4", "Apple Watch SE 3",
+            "Apple Vision Pro", "AirPods 5", "AirPods Pro 3", "AirPods Max 2", "HomePod mini 2",
+            "Apple TV 4K"
+        ];
+        const model = modelNames.find(name => itemName.toLowerCase().includes(name.toLowerCase()));
+        if (model) url.searchParams.set("search", model);
+
+        return `${url.pathname.split("/").pop()}${url.search}`;
+    };
+
     document.querySelectorAll(".nav-menu > a").forEach(link => {
         const menuName = link.textContent.trim();
         const menu = megaMenus[menuName];
@@ -346,7 +383,7 @@ document.addEventListener("DOMContentLoaded", () => {
         wrapper.className = "nav-link-wrap";
         link.replaceWith(wrapper);
         wrapper.appendChild(link);
-        if (["Mac", "Watch", "Vision", "AirPods", "Home", "Entertainment", "Accessories"].includes(menuName)) {
+        if (["Mac", "iPad", "iPhone", "Watch", "Vision", "AirPods", "Home", "Entertainment", "Accessories"].includes(menuName)) {
             const category = menuName === "Accessories" ? "Accesorios" : menuName;
             link.href = `catalogo.html?category=${encodeURIComponent(category)}`;
         }
@@ -359,7 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="mega-column">
                         ${column.map((text, index) => index === 0
                             ? `<p class="mega-heading">${text}</p>`
-                            : `<a href="${menuName === "Soporte" ? "soporte.html" : `catalogo.html?category=${encodeURIComponent(["Mac", "iPad", "iPhone", "Watch", "Vision", "AirPods", "Home", "Entertainment", "Accessories"].includes(menuName) ? (menuName === "Accessories" ? "Accesorios" : menuName) : "Todos")}`}">${text}</a>`).join("")}
+                            : `<a href="${getMegaMenuUrl(menuName, text)}">${text}</a>`).join("")}
                     </div>
                 `).join("")}
             </div>
@@ -378,12 +415,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const catalogProducts = [
         { id: 122, category: "iPhone", title: "iPhone", price: 999, image: "img/official/iphone.webp", description: "Toda la familia iPhone, con potencia profesional y cámaras avanzadas." },
+        { id: 141, category: "iPhone", title: "iPhone 18 Pro", price: 999, image: "img/official/iphone.webp", description: "iPhone profesional con titanio y cámara avanzada." },
+        { id: 142, category: "iPhone", title: "iPhone 18", price: 799, image: "img/official/iphone.webp", description: "iPhone potente con diseño moderno y gran autonomía." },
+        { id: 143, category: "iPhone", title: "iPhone Air", price: 899, image: "img/official/iphone.webp", description: "iPhone ultradelgado con una experiencia de alto nivel." },
+        { id: 144, category: "iPhone", title: "iPhone Duo", price: 699, image: "img/official/iphone.webp", description: "iPhone versátil diseñado para el día a día." },
         { id: 121, category: "iPad", title: "iPad", price: 599, image: "img/official/ipad.webp", description: "iPad con Apple Pencil y Magic Keyboard para crear y estudiar." },
+        { id: 145, category: "iPad", title: "iPad Pro", price: 799, image: "img/official/ipad.webp", description: "iPad profesional con máximo rendimiento." },
+        { id: 146, category: "iPad", title: "iPad Air", price: 599, image: "img/official/ipad.webp", description: "iPad ligero y versátil para estudiar y crear." },
+        { id: 147, category: "iPad", title: "iPad mini", price: 499, image: "img/official/ipad.webp", description: "iPad compacto con gran potencia y movilidad." },
         { id: 130, category: "Mac", title: "MacBook Neo", price: 699, image: "img/official/mac.webp", description: "Mac ligero y versátil con una sorprendente relación entre potencia y precio." },
+        { id: 136, category: "Mac", title: "MacBook Air", price: 999, image: "img/official/mac.webp", description: "Mac ultradelgado y liviano con gran autonomía." },
+        { id: 137, category: "Mac", title: "MacBook Pro", price: 1599, image: "img/official/mac.webp", description: "Mac profesional con máximo rendimiento para trabajar y crear." },
+        { id: 138, category: "Mac", title: "iMac", price: 1299, image: "img/official/mac.webp", description: "Computadora todo en uno con una pantalla inmersiva." },
+        { id: 139, category: "Mac", title: "Mac mini", price: 599, image: "img/official/mac.webp", description: "Mac compacto con gran potencia en un diseño reducido." },
+        { id: 140, category: "Mac", title: "Mac Studio", price: 1999, image: "img/official/mac.webp", description: "Estación profesional diseñada para cargas de trabajo exigentes." },
         { id: 131, category: "Watch", title: "Apple Watch Series 12", price: 399, image: "img/official/watch.webp", description: "Monitorización avanzada de salud y actividad en una carcasa elegante." },
+        { id: 148, category: "Watch", title: "Apple Watch Ultra 4", price: 799, image: "img/official/watch.webp", description: "Apple Watch resistente y avanzado para actividad extrema." },
+        { id: 149, category: "Watch", title: "Apple Watch SE 3", price: 249, image: "img/official/watch.webp", description: "Apple Watch esencial con funciones de salud y actividad." },
         { id: 132, category: "Vision", title: "Apple Vision Pro", price: 3499, image: "img/official/vision.webp", description: "Experiencia espacial que integra contenido digital con el entorno físico." },
         { id: 133, category: "AirPods", title: "AirPods Pro 3", price: 249, image: "img/official/airpods.webp", description: "Auriculares inalámbricos con cancelación activa y sonido inmersivo." },
+        { id: 150, category: "AirPods", title: "AirPods 5", price: 179, image: "img/official/airpods.webp", description: "AirPods con sonido envolvente y conexión inalámbrica." },
+        { id: 151, category: "AirPods", title: "AirPods Max 2", price: 549, image: "img/official/airpods.webp", description: "Auriculares over-ear con audio de alta fidelidad." },
         { id: 134, category: "Home", title: "HomePod", price: 299, image: "img/official/homepod.webp", description: "Altavoz inteligente con audio de alta fidelidad y control del hogar." },
+        { id: 152, category: "Home", title: "HomePod mini 2", price: 99, image: "img/official/homepod.webp", description: "Altavoz compacto con control inteligente del hogar." },
         { id: 135, category: "Entertainment", title: "Apple TV 4K", price: 129, image: "img/official/appletv.webp", description: "Dispositivo de entretenimiento con Apple TV y contenido en 4K." },
         { id: 108, category: "Accesorios", title: "Funda roja para iPhone", price: 49, image: "img/products/108.webp", description: "Funda trasera roja con recortes para cámara y botones." },
         { id: 104, category: "Accesorios", title: "Kit de carga y conectividad", price: 79, image: "img/products/104.webp", description: "Adaptador compacto blanco con cables de conexión." },
@@ -394,6 +448,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let activeCategory = "Todos";
         let apiProducts = [];
         const requestedCategory = new URLSearchParams(window.location.search).get("category");
+        let requestedSearch = new URLSearchParams(window.location.search).get("search")?.trim();
         const validCategories = ["Todos", "iPhone", "iPad", "Mac", "Watch", "Vision", "AirPods", "Home", "Entertainment", "Accesorios"];
         if (requestedCategory && validCategories.includes(requestedCategory)) {
             activeCategory = requestedCategory;
@@ -431,9 +486,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const renderCatalog = category => {
             activeCategory = category;
             const combinedProducts = [...catalogProducts, ...apiProducts];
-            const products = category === "Todos"
+            let products = category === "Todos"
                 ? combinedProducts
                 : combinedProducts.filter(product => product.category === category);
+            if (requestedSearch) {
+                const search = requestedSearch.toLowerCase();
+                products = products.filter(product =>
+                    `${product.title} ${product.description}`.toLowerCase().includes(search)
+                );
+            }
 
             document.querySelectorAll(".catalog-filter").forEach(button => {
                 const isActive = button.dataset.category === category;
@@ -443,7 +504,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const catalogHeading = document.querySelector(".shop-page .section-header h2");
             if (catalogHeading) {
-                catalogHeading.textContent = category === "Todos" ? "Catálogo general" : `${category} disponibles`;
+                catalogHeading.textContent = requestedSearch
+                    ? `${requestedSearch} disponibles`
+                    : category === "Todos" ? "Catálogo general" : `${category} disponibles`;
             }
 
             productGrid.innerHTML = "";
@@ -480,6 +543,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     url.searchParams.set("category", category);
                 }
+                url.searchParams.delete("search");
+                requestedSearch = null;
                 window.history.replaceState({}, "", url);
                 renderCatalog(category);
             });
