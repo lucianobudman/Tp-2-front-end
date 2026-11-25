@@ -134,8 +134,7 @@ body {
 }
 
 .store-menu-trigger:hover,
-.store-menu-trigger:focus-visible,
-.nav-item-store.is-open .store-menu-trigger {
+.store-menu-trigger:focus-visible {
     opacity: 1;
 }
 
@@ -153,7 +152,6 @@ body {
     transition: opacity 180ms ease, transform 180ms ease, visibility 180ms;
 }
 
-.nav-item-store.is-open .store-mega-menu,
 .nav-item-store:hover .store-mega-menu {
     opacity: 1;
     visibility: visible;

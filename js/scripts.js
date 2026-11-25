@@ -252,29 +252,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    const storeMenuTrigger = document.querySelector(".store-menu-trigger");
-    const storeMenuItem = document.querySelector(".nav-item-store");
-    if (storeMenuTrigger && storeMenuItem) {
-        storeMenuTrigger.addEventListener("click", event => {
-            event.stopPropagation();
-            const isOpen = storeMenuItem.classList.toggle("is-open");
-            storeMenuTrigger.setAttribute("aria-expanded", String(isOpen));
-        });
-        document.addEventListener("click", event => {
-            if (!storeMenuItem.contains(event.target)) {
-                storeMenuItem.classList.remove("is-open");
-                storeMenuTrigger.setAttribute("aria-expanded", "false");
-            }
-        });
-        document.addEventListener("keydown", event => {
-            if (event.key === "Escape") {
-                storeMenuItem.classList.remove("is-open");
-                storeMenuTrigger.setAttribute("aria-expanded", "false");
-                storeMenuTrigger.focus();
-            }
-        });
-    }
-
     const megaMenus = {
         "Mac": {
             columns: [
@@ -415,12 +392,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         wrapper.addEventListener("mouseenter", () => wrapper.classList.add("is-open"));
         wrapper.addEventListener("mouseleave", () => wrapper.classList.remove("is-open"));
-        link.addEventListener("click", event => {
-            if (window.matchMedia("(max-width: 480px)").matches) return;
-            event.preventDefault();
-            const isOpen = wrapper.classList.toggle("is-open");
-            link.setAttribute("aria-expanded", String(isOpen));
-        });
     });
 
     const catalogProducts = [
