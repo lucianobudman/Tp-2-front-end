@@ -226,6 +226,16 @@ document.addEventListener("DOMContentLoaded", () => {
         closeCart();
     });
 
+    const supportForm = document.getElementById("support-form");
+    if (supportForm) {
+        supportForm.addEventListener("submit", event => {
+            event.preventDefault();
+            const status = document.getElementById("support-status");
+            status.textContent = "Consulta enviada. Te responderemos a la brevedad.";
+            supportForm.reset();
+        });
+    }
+
     navToggle.addEventListener("click", () => {
         const isExpanded = navToggle.getAttribute("aria-expanded") === "true";
         navToggle.setAttribute("aria-expanded", String(!isExpanded));
